@@ -2,19 +2,43 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float moveSpeed = 6f;
+    public float jumpForce = 5f;
     private Rigidbody2D rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+
         
+        if (vertical > 0f)
+        {
+            HandleJump(horizontal);
+        }
+    }
+
+    void HandleJump(float horizontalInput)
+    {
+        float xVelocity = 0f;
+
+        if (horizontalInput < 0f)
+        {
+            
+            xVelocity = -moveSpeed * 0.5f;
+        }
+        else if (horizontalInput > 0f)
+        {
+            
+            xVelocity = moveSpeed * 0.5f;
+        }
+
+        
+        rb.velocity = new Vector2(xVelocity, jumpForce);
     }
 }
