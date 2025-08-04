@@ -39,6 +39,6 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        rb.velocity = new Vector2(xVelocity, jumpForce);
+        rb.linearVelocity = new Vector2(xVelocity, jumpForce);
     }
 }
