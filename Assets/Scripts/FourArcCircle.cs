@@ -45,7 +45,7 @@ public class FourArcCircle : MonoBehaviour
                 lr.loop = false;
                 lr.material = new Material(Shader.Find("Sprites/Default"));
                 lr.widthMultiplier = lineThickness;
-                lr.numCapVertices = 5; // rounded ends
+                lr.numCapVertices = 0; // rounded ends
 
                 arcRenderers[i] = lr;
             }
