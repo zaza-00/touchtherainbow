@@ -9,26 +9,42 @@ public class FourArcCircle : MonoBehaviour
     [Range(0.01f, 1f)]
     public float lineThickness = 0.1f;
     [Range(4, 200)]
-    public int segmentsPerArc = 10;
+    public int segmentsPerArc = 25;
 
-    [Header("Arc Colors")]
-    public Color arc1Color = Color.red;
-    public Color arc2Color = Color.green;
-    public Color arc3Color = Color.blue;
-    public Color arc4Color = Color.yellow;
+    [Header("Arc Colors (Hex)")]
+    public string arc1Hex = "#00BBEA";
+    public string arc2Hex = "#FF0084";
+    public string arc3Hex = "#8700FF";
+    public string arc4Hex = "#00FF9C";
 
     private LineRenderer[] arcRenderers = new LineRenderer[4];
+    private Color[] parsedColors = new Color[4];
 
-    void OnEnable()
+    void Start()
     {
+        ParseHexColors();
         CreateArcRenderers();
         DrawArcs();
     }
 
     void OnValidate()
     {
+        ParseHexColors();
         CreateArcRenderers();
         DrawArcs();
+    }
+
+    void ParseHexColors()
+    {
+        string[] hexStrings = { arc1Hex, arc2Hex, arc3Hex, arc4Hex };
+        for (int i = 0; i < hexStrings.Length; i++)
+        {
+            if (!ColorUtility.TryParseHtmlString(hexStrings[i], out parsedColors[i]))
+            {
+                Debug.LogWarning($"Invalid hex color at Arc {i + 1}: {hexStrings[i]}. Using white.");
+                parsedColors[i] = Color.white;
+            }
+        }
     }
 
     void CreateArcRenderers()
@@ -37,6 +53,15 @@ public class FourArcCircle : MonoBehaviour
         {
             if (arcRenderers[i] == null)
             {
+                // Check if child already exists to prevent duplicates
+                Transform existingArc = transform.Find($"Arc_{i + 1}");
+                if (existingArc != null)
+                {
+                    arcRenderers[i] = existingArc.GetComponent<LineRenderer>();
+                    if (arcRenderers[i] != null)
+                        continue;
+                }
+
                 GameObject arcObj = new GameObject($"Arc_{i + 1}");
                 arcObj.transform.SetParent(transform, false);
                 LineRenderer lr = arcObj.AddComponent<LineRenderer>();
@@ -45,7 +70,7 @@ public class FourArcCircle : MonoBehaviour
                 lr.loop = false;
                 lr.material = new Material(Shader.Find("Sprites/Default"));
                 lr.widthMultiplier = lineThickness;
-                lr.numCapVertices = 0; // rounded ends
+                lr.numCapVertices = 5; // rounded ends
 
                 arcRenderers[i] = lr;
             }
@@ -54,13 +79,12 @@ public class FourArcCircle : MonoBehaviour
 
     void DrawArcs()
     {
-        Color[] colors = { arc1Color, arc2Color, arc3Color, arc4Color };
         float[] startAngles = { 0f, 90f, 180f, 270f };
         float[] endAngles = { 90f, 180f, 270f, 360f };
 
         for (int i = 0; i < 4; i++)
         {
-            DrawArc(arcRenderers[i], startAngles[i], endAngles[i], colors[i]);
+            DrawArc(arcRenderers[i], startAngles[i], endAngles[i], parsedColors[i]);
         }
     }
 
