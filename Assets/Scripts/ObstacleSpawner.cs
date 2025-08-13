@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
-    public Transform cameraTransform;   
-    public GameObject[] obstaclePrefabs; 
-    public float spawnInterval = 5f;    
-    public float spawnAheadDistance = 10f; 
+    public Transform cameraTransform;
+    public GameObject[] obstaclePrefabs;
+
+    public float spawnDistance = 5f; // distance between spawns
+    public float spawnAheadDistance = 10f; // how far above the camera to spawn
+    public float[] xPositions = new float[] { 0f, -2.5f, 2.5f }; // possible x positions
 
     private float nextSpawnY;
 
@@ -16,23 +18,30 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        // Make the spawner follow the camera’s X & Y position
-        transform.position = new Vector3(cameraTransform.position.x, cameraTransform.position.y + spawnAheadDistance, 0f);
+        // move spawner above camera
+        transform.position = new Vector3(
+            cameraTransform.position.x,
+            cameraTransform.position.y + spawnAheadDistance,
+            0f
+        );
 
-        // Spawn new obstacles when the spawner moves up far enough
+        // check if we need to spawn
         if (transform.position.y >= nextSpawnY)
         {
             SpawnObstacle();
-            nextSpawnY += spawnInterval;
+            nextSpawnY += spawnDistance;
         }
     }
 
     void SpawnObstacle()
     {
-        // Pick a random prefab
+        // pick a random obstacle prefab
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
 
-        // Spawn at spawner's position
-        Instantiate(prefab, transform.position, Quaternion.identity);
+        // pick a random lane
+        float x = xPositions[Random.Range(0, xPositions.Length)];
+
+        // spawn at current spawner position
+        Instantiate(prefab, new Vector3(x, transform.position.y, 0f), Quaternion.identity);
     }
 }

@@ -479,13 +479,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 695835035}
+  spawnAheadDistance: 10
   obstaclePrefabs:
   - {fileID: 6188896940929727372, guid: 25aa04be54246634e998d7d6c580b4db, type: 3}
   - {fileID: 4450293192187094453, guid: 93735411a64960a49b579b6b8925e291, type: 3}
   - {fileID: 300782050569168165, guid: f5274b07faf18e24d8dc4b434e4c34d7, type: 3}
   - {fileID: 4557228478529562762, guid: 6cc4dfef2ce68924898dc40e815b9284, type: 3}
-  spawnInterval: 5
-  spawnAheadDistance: 10
+  extraGap: 2
 --- !u!4 &933590855
 Transform:
   m_ObjectHideFlags: 0

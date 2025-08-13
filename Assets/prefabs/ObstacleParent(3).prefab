@@ -57,7 +57,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2d2e458c5ad4da34e9c17e8416bf6e8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ LineRenderer:
   - {x: 0.000000025638494, y: -2.15, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.332
+    widthMultiplier: 0.359
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -260,7 +260,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2d2e458c5ad4da34e9c17e8416bf6e8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,7 +289,7 @@ LineRenderer:
   - {x: 2.15, y: 0.00000037591795, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.332
+    widthMultiplier: 0.359
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2.15
-  lineThickness: 0.332
+  lineThickness: 0.359
   segmentsPerArc: 4
   arc1Hex: '#00BBEA'
   arc2Hex: '#FF0084'
@@ -533,7 +533,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2d2e458c5ad4da34e9c17e8416bf6e8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -562,7 +562,7 @@ LineRenderer:
   - {x: -0.00000009397949, y: 2.15, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.332
+    widthMultiplier: 0.359
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -734,7 +734,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2d2e458c5ad4da34e9c17e8416bf6e8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,7 +763,7 @@ LineRenderer:
   - {x: -2.15, y: -0.00000018795897, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.332
+    widthMultiplier: 0.359
     widthCurve:
       serializedVersion: 2
       m_Curve:
