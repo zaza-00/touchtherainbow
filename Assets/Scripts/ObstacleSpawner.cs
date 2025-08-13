@@ -5,9 +5,9 @@ public class ObjectSpawner : MonoBehaviour
     public Transform cameraTransform;
     public GameObject[] obstaclePrefabs;
 
-    public float spawnDistance = 5f; // distance between spawns
-    public float spawnAheadDistance = 10f; // how far above the camera to spawn
-    public float[] xPositions = new float[] { 0f, -2.5f, 2.5f }; // possible x positions
+    public float extraSpacing = 10f; 
+    public float spawnAheadDistance = 10f;
+    public float[] xPositions = new float[] { 0f, -2.5f, 2.5f };
 
     private float nextSpawnY;
 
@@ -18,30 +18,46 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        // move spawner above camera
         transform.position = new Vector3(
             cameraTransform.position.x,
             cameraTransform.position.y + spawnAheadDistance,
             0f
         );
 
-        // check if we need to spawn
         if (transform.position.y >= nextSpawnY)
         {
             SpawnObstacle();
-            nextSpawnY += spawnDistance;
         }
     }
 
     void SpawnObstacle()
     {
-        // pick a random obstacle prefab
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-
-        // pick a random lane
         float x = xPositions[Random.Range(0, xPositions.Length)];
 
-        // spawn at current spawner position
-        Instantiate(prefab, new Vector3(x, transform.position.y, 0f), Quaternion.identity);
+        GameObject obj = Instantiate(prefab, new Vector3(x, transform.position.y, 0f), Quaternion.identity);
+
+        // Attach destroy script
+        obj.AddComponent<DestroyBelowCamera>().cameraTransform = cameraTransform;
+
+        float obstacleHeight = GetObjectHeight(obj);
+        nextSpawnY = transform.position.y + obstacleHeight + extraSpacing;
+    }
+
+
+    float GetObjectHeight(GameObject obj)
+    {
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+
+        if (renderers.Length == 0)
+            return 1f; // fallback height
+
+        Bounds bounds = renderers[0].bounds;
+        foreach (Renderer rend in renderers)
+        {
+            bounds.Encapsulate(rend.bounds);
+        }
+
+        return bounds.size.y;
     }
 }
