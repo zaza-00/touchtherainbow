@@ -5,14 +5,19 @@ public class ObjectSpawner : MonoBehaviour
     public Transform cameraTransform;
     public GameObject[] obstaclePrefabs;
 
-    public float extraSpacing = 10f; 
+    public float extraSpacing = 10f;
     public float spawnAheadDistance = 10f;
-    public float[] xPositions = new float[] { 0f, -2.5f, 2.5f };
+
+    // Added corner positions — adjust X values for your scene
+    public float[] xPositions = new float[] { 0f, -2.5f, 2.5f, -4f, 4f };
 
     private float nextSpawnY;
 
     void Start()
     {
+        if (cameraTransform == null)
+            cameraTransform = Camera.main.transform;
+
         nextSpawnY = cameraTransform.position.y + spawnAheadDistance;
     }
 
@@ -35,15 +40,19 @@ public class ObjectSpawner : MonoBehaviour
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         float x = xPositions[Random.Range(0, xPositions.Length)];
 
-        GameObject obj = Instantiate(prefab, new Vector3(x, transform.position.y, 0f), Quaternion.identity);
+        // If you want top-corner obstacles slightly higher, tweak Y position here
+        float spawnY = transform.position.y;
 
-        // Attach destroy script
-        obj.AddComponent<DestroyBelowCamera>().cameraTransform = cameraTransform;
+        GameObject obj = Instantiate(prefab, new Vector3(x, spawnY, 0f), Quaternion.identity);
+
+        DestroyBelowCamera destroyScript = obj.AddComponent<DestroyBelowCamera>();
+        destroyScript.cameraTransform = cameraTransform;
+        destroyScript.offset = 5f;
 
         float obstacleHeight = GetObjectHeight(obj);
+
         nextSpawnY = transform.position.y + obstacleHeight + extraSpacing;
     }
-
 
     float GetObjectHeight(GameObject obj)
     {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8500953489765073247}
   - component: {fileID: 8674190175890340740}
   - component: {fileID: 7657822634057003890}
+  - component: {fileID: 938437346246000059}
   m_Layer: 0
   m_Name: Arc_3
   m_TagString: Untagged
@@ -173,7 +174,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -203,6 +204,19 @@ PolygonCollider2D:
       - {x: -0.799351, y: -1.7727644}
       - {x: -1.2508504, y: -1.4217238}
   m_UseDelaunayMesh: 0
+--- !u!114 &938437346246000059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655278317535734523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2352632092884306343
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +228,7 @@ GameObject:
   - component: {fileID: 3276725688972558361}
   - component: {fileID: 3206396482016250885}
   - component: {fileID: 5809425997331903400}
+  - component: {fileID: 8367150866916673073}
   m_Layer: 0
   m_Name: Arc_4
   m_TagString: Untagged
@@ -407,6 +422,19 @@ PolygonCollider2D:
       - {x: 2.1639404, y: -0.91027594}
       - {x: 2.3595777, y: -0.06561136}
   m_UseDelaunayMesh: 0
+--- !u!114 &8367150866916673073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352632092884306343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4557228478529562762
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,9 +446,9 @@ GameObject:
   - component: {fileID: 2482066930732295590}
   - component: {fileID: 6396905183762330869}
   - component: {fileID: 7410395105467891135}
-  - component: {fileID: 3475687111194137606}
+  - component: {fileID: 6406757525732637945}
   m_Layer: 0
-  m_Name: ObstacleParent(3)
+  m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
---- !u!114 &3475687111194137606
+--- !u!114 &6406757525732637945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -502,6 +530,7 @@ GameObject:
   - component: {fileID: 6022209223978351017}
   - component: {fileID: 1001764612739729841}
   - component: {fileID: 6398019313879870507}
+  - component: {fileID: 6277930764763017842}
   m_Layer: 0
   m_Name: Arc_1
   m_TagString: Untagged
@@ -664,7 +693,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -692,6 +721,19 @@ PolygonCollider2D:
       - {x: 2.0014186, y: 1.2353988}
       - {x: 1.8388274, y: 1.4584899}
   m_UseDelaunayMesh: 0
+--- !u!114 &6277930764763017842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215839145976545908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5757266286188320355
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +745,7 @@ GameObject:
   - component: {fileID: 1437561974382464030}
   - component: {fileID: 3022261247346168964}
   - component: {fileID: 644444598476584462}
+  - component: {fileID: 2185955173975126633}
   m_Layer: 0
   m_Name: Arc_2
   m_TagString: Untagged
@@ -865,7 +908,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -895,3 +938,16 @@ PolygonCollider2D:
       - {x: -0.7362826, y: 1.7976279}
       - {x: -0.036934018, y: 1.9460205}
   m_UseDelaunayMesh: 0
+--- !u!114 &2185955173975126633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757266286188320355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceColor: {r: 0, g: 0, b: 0, a: 0}

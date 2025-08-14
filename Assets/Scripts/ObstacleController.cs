@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    public float rotationSpeed = 50f;
+    public float rotationSpeed = 70f;
 
     void Update()
     {
