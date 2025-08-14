@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  obstacleColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2352632092884306343
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  obstacleColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4557228478529562762
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  obstacleColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5757266286188320355
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,4 +950,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2861d8dfc175147a5fe8432983ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceColor: {r: 0, g: 0, b: 0, a: 0}
+  obstacleColor: {r: 1, g: 0, b: 0, a: 1}
