@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,21 +7,46 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 0.5f;
     private Rigidbody2D rb;
 
+    public TMP_Text startText;
+
+    private bool gameStarted = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.simulated = false;
+
+        if (startText != null)
+            startText.gameObject.SetActive(true);
     }
 
     void Update()
     {
+        if (!gameStarted)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                StartGame();
+            }
+            return;
+        }
+
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        
         if (vertical > 0f)
         {
             HandleJump(horizontal);
         }
+    }
+
+    void StartGame()
+    {
+        gameStarted = true;
+        rb.simulated = true;
+
+        if (startText != null)
+            startText.gameObject.SetActive(false);
     }
 
     void HandleJump(float horizontalInput)
@@ -29,16 +55,13 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalInput < 0f)
         {
-            
             xVelocity = -moveSpeed * 0.5f;
         }
         else if (horizontalInput > 0f)
         {
-            
             xVelocity = moveSpeed * 0.5f;
         }
 
-        
         rb.linearVelocity = new Vector2(xVelocity, jumpForce);
     }
 }

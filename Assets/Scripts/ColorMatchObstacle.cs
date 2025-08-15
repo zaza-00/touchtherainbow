@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ColorMatchObstacle : MonoBehaviour
 {
-    public Color obstacleColor = Color.red; // Logical color
+    public Color obstacleColor = Color.red;
     private SpriteRenderer sr;
     private LineRenderer lr;
 
@@ -16,7 +16,6 @@ public class ColorMatchObstacle : MonoBehaviour
             Debug.LogWarning("No compatible renderer found on " + gameObject.name);
         }
 
-        // Automatically pick up color from prefab if obstacleColor is default
         if (obstacleColor == Color.red)
         {
             if (sr != null)
@@ -29,7 +28,6 @@ public class ColorMatchObstacle : MonoBehaviour
             }
         }
 
-        // Apply the color to the renderers
         if (sr != null)
         {
             sr.color = obstacleColor;
@@ -58,6 +56,7 @@ public class ColorMatchObstacle : MonoBehaviour
                 else
                 {
                     Debug.Log("Correct color! You pass!");
+                    playerBall.AddPoint();
                 }
             }
         }

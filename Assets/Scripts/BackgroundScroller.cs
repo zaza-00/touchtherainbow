@@ -2,18 +2,27 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
+    public Camera mainCamera;
     public float scrollSpeed = 0.1f;
+    public Material bgMaterial;   // Assign ScrollingSpriteMat here
 
-    private Material material;
+    private Transform camTransform;
+    private Vector3 startOffset;
+    private Vector2 offset;
 
     void Start()
     {
-        material = GetComponent<Renderer>().material;
+        camTransform = mainCamera.transform;
+        startOffset = transform.position - camTransform.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        float offset = Time.time * scrollSpeed;
-        material.mainTextureOffset = new Vector2(0, offset);
+        // Make background follow camera
+        transform.position = camTransform.position + startOffset;
+
+        // Scroll texture
+        offset.y = camTransform.position.y * scrollSpeed;
+        bgMaterial.SetVector("_Offset", offset);
     }
 }

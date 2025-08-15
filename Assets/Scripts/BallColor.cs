@@ -1,10 +1,14 @@
 using UnityEngine;
+using TMPro;
 
 public class BallColor : MonoBehaviour
 {
-    public Color currentColor = Color.red; // Logical color
+    public Color currentColor = Color.red;
     private SpriteRenderer sr;
     private LineRenderer lr;
+
+    public TMP_Text pointsText;
+    private int points = 0;
 
     void Awake()
     {
@@ -12,24 +16,16 @@ public class BallColor : MonoBehaviour
         lr = GetComponent<LineRenderer>();
 
         if (sr == null && lr == null)
-        {
             Debug.LogWarning("No compatible renderer found on " + gameObject.name);
-        }
 
-        // Automatically pick up color from prefab if currentColor is default red
         if (currentColor == Color.red)
         {
-            if (sr != null)
-            {
-                currentColor = sr.color;
-            }
-            else if (lr != null)
-            {
-                currentColor = lr.startColor;
-            }
+            if (sr != null) currentColor = sr.color;
+            else if (lr != null) currentColor = lr.startColor;
         }
 
         ApplyColor();
+        UpdatePointsUI();
     }
 
     public void SetColor(Color newColor)
@@ -43,7 +39,7 @@ public class BallColor : MonoBehaviour
         if (sr != null)
         {
             Color visibleColor = currentColor;
-            visibleColor.a = 1f; // Ensure fully visible
+            visibleColor.a = 1f;
             sr.color = visibleColor;
         }
 
@@ -52,5 +48,17 @@ public class BallColor : MonoBehaviour
             lr.startColor = currentColor;
             lr.endColor = currentColor;
         }
+    }
+
+    public void AddPoint()
+    {
+        points++;
+        UpdatePointsUI();
+    }
+
+    private void UpdatePointsUI()
+    {
+        if (pointsText != null)
+            pointsText.text = "Points: " + points;
     }
 }
