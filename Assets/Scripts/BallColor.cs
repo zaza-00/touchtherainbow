@@ -54,11 +54,22 @@ public class BallColor : MonoBehaviour
     {
         points++;
         UpdatePointsUI();
+        AudioManager.Instance.PlayPointSound();
     }
 
     private void UpdatePointsUI()
     {
         if (pointsText != null)
             pointsText.text = "Points: " + points;
+    }
+
+    public void PlayGameOverSound()
+    {
+        AudioManager.Instance.PlayGameOverSound();
+    }
+
+    public void PlayStartTune()
+    {
+        AudioManager.Instance.PlayStartTune();
     }
 }

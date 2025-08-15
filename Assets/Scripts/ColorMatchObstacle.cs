@@ -12,32 +12,16 @@ public class ColorMatchObstacle : MonoBehaviour
         lr = GetComponent<LineRenderer>();
 
         if (sr == null && lr == null)
-        {
             Debug.LogWarning("No compatible renderer found on " + gameObject.name);
-        }
 
         if (obstacleColor == Color.red)
         {
-            if (sr != null)
-            {
-                obstacleColor = sr.color;
-            }
-            else if (lr != null)
-            {
-                obstacleColor = lr.startColor;
-            }
+            if (sr != null) obstacleColor = sr.color;
+            else if (lr != null) obstacleColor = lr.startColor;
         }
 
-        if (sr != null)
-        {
-            sr.color = obstacleColor;
-        }
-
-        if (lr != null)
-        {
-            lr.startColor = obstacleColor;
-            lr.endColor = obstacleColor;
-        }
+        if (sr != null) sr.color = obstacleColor;
+        if (lr != null) { lr.startColor = obstacleColor; lr.endColor = obstacleColor; }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -50,12 +34,11 @@ public class ColorMatchObstacle : MonoBehaviour
             {
                 if (!ColorsMatch(playerBall.currentColor, obstacleColor))
                 {
-                    Debug.Log("Wrong color! Player loses!");
+                    AudioManager.Instance.PlayGameOverSound();
                     Destroy(other.gameObject);
                 }
                 else
                 {
-                    Debug.Log("Correct color! You pass!");
                     playerBall.AddPoint();
                 }
             }
