@@ -45,7 +45,7 @@ Shader "Custom/ScrollingSprite"
             float4 _MainTex_ST;
             fixed4 _Color;
 
-            float2 _Offset; // scrolling offset
+            float2 _Offset;
 
             v2f vert(appdata_t IN)
             {

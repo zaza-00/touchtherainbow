@@ -4,7 +4,7 @@ public class BackgroundScroller : MonoBehaviour
 {
     public Camera mainCamera;
     public float scrollSpeed = 0.1f;
-    public Material bgMaterial;   // Assign ScrollingSpriteMat here
+    public Material bgMaterial;
 
     private Transform camTransform;
     private Vector3 startOffset;
